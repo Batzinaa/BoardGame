@@ -8,28 +8,26 @@ public class App {
 
     public static void main(String[] args) {
 
-        Player player1 = new Player("batzinaa");
-        PlayerList playerList = new PlayerList();
-        playerList.add(player1);
 
-        //creating board for game (board is my squareList)
+
         Random n = new Random();
 
-        Board board = new Board(n.nextInt(100));
+        PlayerList playerList = new PlayerList();
+        Player batzinaa = new Player("batzinaa",new Square());
+        Player dimitris = new Player("blackline",new Square());
+        playerList.add(batzinaa);
+        playerList.add(dimitris);
 
-        //creating game
-        BoardGame game = new BoardGame(board, playerList);
-        //main game loop
-        game.getFirstPlayer();
-        Display.welcomePlayers();
+        BoardGame game = new BoardGame(new Board(n.nextInt(100)),playerList);
+
+
 
         do {
 
             int diceResult = Dice.rollDice();
-            game.moveCurrentPlayer(diceResult);
 
 
-        } while (!game.isFinished());
+        } while (false/*!gameState.isFinished()*/);
 
     }
 }

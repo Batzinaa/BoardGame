@@ -44,4 +44,9 @@ public class PlayerList {
         }
         return currentPlayer;
     }
+
+
+    public List<Player> getPlayerList() {
+        return playerList;
+    }
 }

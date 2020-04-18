@@ -2,7 +2,7 @@ package org.example.model;
 
 import org.example.behaviours.Behaviour;
 import org.example.behaviours.DefaultBehaviour;
-import org.example.behaviours.LoseTurnBehaviour;
+
 
 public class Square {
 
@@ -11,8 +11,8 @@ public class Square {
     public Square() {
     }
 
-    public void executeBehaviour() {
-        behaviour.execute();
+    public void executeBehaviour(GameState gameState) {
+        behaviour.execute(gameState);
     }
 
     public void setBehaviour(Behaviour behaviour) {

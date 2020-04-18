@@ -3,13 +3,12 @@ package org.example.model;
 
 public class BoardGame {
 
-    GameState gameState;
     Display display;
 
-    Board board;
-    PlayerList playerList;
-    Player activePlayer;
-    boolean gameIsFinished;
+    private Board board;
+    private PlayerList playerList;
+    private Player activePlayer;
+    private boolean gameIsFinished;
 
 
     public BoardGame(Board board, PlayerList playerList) {
@@ -17,6 +16,13 @@ public class BoardGame {
         this.board = board;
         activePlayer = getFirstPlayer();
 
+        spawnPlayers();
+    }
+
+    public void spawnPlayers() {
+        for (int i = 0; i < playerList.getPlayerList().size(); i++) {
+            playerList.getPlayerList().get(i).setPosition(board.getFirstSquare());
+        }
     }
 
     public boolean getGameIsFinished() {
@@ -35,8 +41,8 @@ public class BoardGame {
         return playerList.getFirstPlayer();
     }
 
-    public Player getActivePlayer() {
-        return playerList.getCurrentPlayer();
+    public void getActivePlayer() {
+        playerList.getCurrentPlayer();
     }
 
 
