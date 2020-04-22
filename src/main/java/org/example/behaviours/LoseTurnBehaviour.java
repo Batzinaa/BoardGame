@@ -1,12 +1,11 @@
 package org.example.behaviours;
 
-import org.example.model.GameState;
+
+import org.example.model.BoardGame;
 
 public class LoseTurnBehaviour implements  Behaviour {
     @Override
-    public void execute(GameState gameState) {
-        //Decide here what lose turn means
-
+    public void execute(BoardGame boardGame) {
         System.out.println("Xaneis tin seira sou");
     }
 }

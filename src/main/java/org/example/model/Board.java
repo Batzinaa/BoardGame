@@ -11,18 +11,15 @@ public class Board {
 
     public Board(int boardSize) {
         this.boardSize = boardSize;
-        this.board = new ArrayList<>(boardSize);
-        fillWithSquares();
+        this.board = new ArrayList<Square>(boardSize);
     }
 
-    public void fillWithSquares() {
-        for (int i = 0; i < boardSize; i++) {
-            board.add(new Square());
-        }
+    public void setSquareInBoard(Square square) {
+        this.board.add(square.getPosition(), square);
     }
 
-    public Square getFirstSquare() {
-        return board.get(0);
+    public int getFirstSquare() {
+        return 0;
     }
 
     public Square getLastSquare() {

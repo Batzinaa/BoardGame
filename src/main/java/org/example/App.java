@@ -2,32 +2,23 @@ package org.example;
 
 import org.example.model.*;
 
-import java.util.Random;
 
 public class App {
 
     public static void main(String[] args) {
 
-
-
-        Random n = new Random();
-
+        //TODO: PlayerService use JSON to setup playerList
         PlayerList playerList = new PlayerList();
-        Player batzinaa = new Player("batzinaa",new Square());
-        Player dimitris = new Player("blackline",new Square());
+        Player batzinaa = new Player("batzinaa");
+        Player dimitris = new Player("blackline");
         playerList.add(batzinaa);
         playerList.add(dimitris);
 
-        BoardGame game = new BoardGame(new Board(n.nextInt(100)),playerList);
+        BoardGame boardGame = new BoardGame();
+        boardGame.setPlayers(playerList.getPlayerList());
+        boardGame.setBoard(); //TODO: use JSON to setup Board
+        boardGame.startGame();
 
-
-
-        do {
-
-            int diceResult = Dice.rollDice();
-
-
-        } while (false/*!gameState.isFinished()*/);
 
     }
 }

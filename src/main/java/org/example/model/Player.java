@@ -6,14 +6,12 @@ public class Player {
 
     private String pNickname;
     private boolean isPlaying;
-    private Square position;
+    private int position;
 
-    public Player(String pNickname, Square startingPosition) {
+    public Player(String pNickname) {
         this.pNickname = pNickname;
         this.isPlaying = false;
-        this.position = startingPosition;
     }
-
 
     public String getNickname() {
         return pNickname;
@@ -27,11 +25,11 @@ public class Player {
         isPlaying = playing;
     }
 
-    public Square getPosition() {
+    public int getPosition() {
         return position;
     }
 
-    public void setPosition(Square position) {
+    public void setPosition(int position) {
         this.position = position;
     }
 }

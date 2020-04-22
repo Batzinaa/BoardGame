@@ -1,10 +1,10 @@
 package org.example.behaviours;
 
-import org.example.model.GameState;
+
+import org.example.model.BoardGame;
 
 public class MoveThroughStairsBehaviour implements Behaviour {
     @Override
-    public void execute(GameState gameState) {
-        throw new UnsupportedOperationException("Vriskesai se ena tetragwno me skala. Metakinisou sto tade square");
+    public void execute(BoardGame boardGame) {
     }
 }

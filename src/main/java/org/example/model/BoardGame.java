@@ -1,52 +1,114 @@
 package org.example.model;
 
 
+import org.example.behaviours.MoveThroughSnakeBehaviour;
+
+import java.util.List;
+
 public class BoardGame {
 
-    Display display;
-
+    private Display display = new Display();
     private Board board;
-    private PlayerList playerList;
+    private int numberOfPlayers;
     private Player activePlayer;
+    private PlayerList playerList;
     private boolean gameIsFinished;
+    private int numberOfDices;
+
+    private static final int DEFAULT_BOARD_SIZE = 100;
+    private static final int DEFAULT_NO_OF_DICES = 1;
 
 
-    public BoardGame(Board board, PlayerList playerList) {
-        this.playerList = playerList;
-        this.board = board;
-        activePlayer = getFirstPlayer();
-
-        spawnPlayers();
+    public BoardGame(int boardSize) {
+        this.board = new Board(boardSize);
+        this.playerList = new PlayerList();
+        this.numberOfDices = DEFAULT_NO_OF_DICES;
     }
 
-    public void spawnPlayers() {
-        for (int i = 0; i < playerList.getPlayerList().size(); i++) {
-            playerList.getPlayerList().get(i).setPosition(board.getFirstSquare());
+    public BoardGame() {
+        this(BoardGame.DEFAULT_BOARD_SIZE);
+    }
+
+    public void setNumberOfDices(int numberOfDices) {
+        this.numberOfDices = numberOfDices;
+    }
+
+    /**
+     * ==================Initialize board==================
+     */
+
+    public void setBoard() {
+        board.setSquareInBoard(new Square(0));
+        board.setSquareInBoard(new Square(1));
+        board.setSquareInBoard(new Square(2));
+        board.setSquareInBoard(new Square(3));
+        board.setSquareInBoard(new Square(4));
+        board.getBoard().get(4).setBehaviour(new MoveThroughSnakeBehaviour(0));
+        board.setSquareInBoard(new Square(5));
+        board.getBoard().get(5).setBehaviour(new MoveThroughSnakeBehaviour(0));
+        board.setSquareInBoard(new Square(6));
+        board.getBoard().get(6).setBehaviour(new MoveThroughSnakeBehaviour(0));
+    }
+
+    public void setPlayers(List<Player> players) {
+        this.playerList.setPlayers(players);
+        this.numberOfPlayers = players.size();
+        spawnPlayers();
+        activePlayer = playerList.getPlayerList().get(0);
+    }
+
+    private void spawnPlayers() {
+        for (Player player : playerList.getPlayerList()) {
+            player.setPosition(board.getFirstSquare());
         }
     }
 
-    public boolean getGameIsFinished() {
+    private boolean gameIsFinished() {
         return gameIsFinished;
     }
 
-    public void setGameIsFinished(boolean gameIsFinished) {
+    private void setGameIsFinished(boolean gameIsFinished) {
         this.gameIsFinished = gameIsFinished;
     }
 
-    public boolean isFinished() {
-        return gameIsFinished;
+    /**
+     * ====================================================
+     */
+
+    public void setCurrentPlayerPosition(int index) {
+        activePlayer.setPosition(index);
     }
 
-    public Player getFirstPlayer() {
-        return playerList.getFirstPlayer();
+    private void executeCurrentSquare() {
+        int i = activePlayer.getPosition();
+        board.getBoard().get(4).executeBehaviour(this);
     }
 
-    public void getActivePlayer() {
-        playerList.getCurrentPlayer();
+    private int getTotalValueAfterDiceRoll() {
+        return (numberOfDices * Dice.roll());
+    }
+
+    private void movePlayer(Player player, int diceValue) {
+        int oldPosition = player.getPosition();
+        int newPosition = oldPosition + diceValue;
+        if (newPosition <= board.getBoard().size())
+            player.setPosition(newPosition);
+    }
+
+    public void startGame() {
+        display.welcomePlayers();
+        while (!gameIsFinished()) {
+            Player currentPlayer = playerList.getNextPlayer();
+            display.whoIsPlaying(currentPlayer);
+            display.rollingDice(currentPlayer);
+            int totalDiceValue = getTotalValueAfterDiceRoll();
+            movePlayer(currentPlayer, totalDiceValue);
+            executeCurrentSquare();
+            display.yourTurnIsOver(currentPlayer);
+        }
     }
 
 
-    public void moveCurrentPlayer(int diceResult) {
 
-    }
+
 }

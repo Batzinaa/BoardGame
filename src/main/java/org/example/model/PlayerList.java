@@ -1,52 +1,49 @@
 package org.example.model;
 
-import java.util.ArrayList;
+import java.util.LinkedList;
 import java.util.List;
 
 public class PlayerList {
 
-    private List<Player> playerList = new ArrayList<>();
+    private LinkedList<Player> playerList = new LinkedList<>();
     private Player currentPlayer;
-    private Player nextPlayer;
+
 
     public void add(Player player) {
         playerList.add(player);
     }
 
-    public void remove(Player player) {
-        playerList.remove(player);
+    public int getSize() {
+        return playerList.size();
     }
 
-    //TODO: bug fix prepei na apofasizei ton next player vash to isPlaying
     public Player getNextPlayer() {
-        for (int i = 0; i < playerList.size(); i++) {
-            if (playerList.get(i).isPlaying()) {
-                playerList.get(i).setPlaying(false);
-                if (playerList.indexOf(i) == playerList.lastIndexOf(i))
-                    nextPlayer = getFirstPlayer();
-                else
-                    playerList.get(i + 1).setPlaying(true);
-                nextPlayer = playerList.get(i + 1);
-            }
-        }
-        return nextPlayer;
-    }
-
-    public Player getFirstPlayer() {
-        playerList.get(0).setPlaying(true);
-        return playerList.get(0);
-    }
-
-    public Player getCurrentPlayer() {
-        for (int i = 0; i < playerList.size(); i++) {
-            if (playerList.get(i).isPlaying())
-                currentPlayer = playerList.get(i);
-        }
+        currentPlayer = playerList.poll();
+        playerList.offer(currentPlayer);
         return currentPlayer;
     }
 
+    public void setPlayerList(List<Player> players) {
+        for (Player player : players) {
+            add(player);
+        }
+    }
+
+    public Player getFirstPlayer() {
+        return playerList.getFirst();
+    }
+
+    public Player getCurrentPlayer() {
+        return currentPlayer;
+    }
 
     public List<Player> getPlayerList() {
         return playerList;
+    }
+
+    public void setPlayers(List<Player> players) {
+        for(Player player : players){
+            add(player);
+        }
     }
 }
