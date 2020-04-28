@@ -1,35 +1,41 @@
 package org.example.model;
 
 
-
 public class Player {
 
     private String pNickname;
-    private boolean isPlaying;
-    private int position;
+    private boolean yourTurn;
+    private Square square;
 
     public Player(String pNickname) {
         this.pNickname = pNickname;
-        this.isPlaying = false;
+        this.yourTurn = false;
+    }
+
+    public Square getSquare() {
+        return square;
+    }
+
+    public void setSquare(Square square) {
+        this.square = square;
+    }
+
+    public int getPosition() {
+        return square.getPosition();
     }
 
     public String getNickname() {
         return pNickname;
     }
 
-    public boolean isPlaying() {
-        return isPlaying;
+    public boolean wins() {
+        return square.isLastSquare();
     }
 
-    public void setPlaying(boolean playing) {
-        isPlaying = playing;
-    }
 
-    public int getPosition() {
-        return position;
-    }
-
-    public void setPosition(int position) {
-        this.position = position;
+    public void move(int roll) {
+        square.leave(this);
+        square = square.moveAndLand(roll);
+        square.enter(this);
     }
 }

@@ -1,15 +1,16 @@
 package org.example.model;
 
-import org.example.behaviours.Behaviour;
-import org.example.behaviours.DefaultBehaviour;
+import org.example.behaviours.SquareBehaviour;
 
 
 public class Square {
-
-    private Behaviour behaviour = new DefaultBehaviour();
+    private Board board;
+    private Player player;
     private int position;
+    private SquareBehaviour squareBehaviour;
 
-    public Square(int position) {
+    public Square(Board board, int position) {
+        this.board = board;
         this.position = position;
     }
 
@@ -17,11 +18,55 @@ public class Square {
         return position;
     }
 
-    public void executeBehaviour(BoardGame boardGame) {
-        behaviour.execute(boardGame);
+    public void setBehaviour(SquareBehaviour squareBehaviour) {
+        this.squareBehaviour = squareBehaviour;
     }
 
-    public void setBehaviour(Behaviour behaviour) {
-        this.behaviour = behaviour;
+    public void setPlayer(Player player) {
+        this.player = player;
+    }
+
+    public Player getPlayer() {
+        return player;
+    }
+
+    public boolean isOccupied() {
+        return squareBehaviour.isOccupied();
+    }
+
+    public boolean isLastSquare() {
+        return squareBehaviour.isLastSquare();
+    }
+
+    /*public void executeBehaviour() {
+        squareBehaviour.execute(boardGame);
+    }*/
+
+    public void enter(Player player) {
+        squareBehaviour.enter(player);
+    }
+
+    public void leave(Player player) {
+        squareBehaviour.leave(player);
+    }
+
+    public Square moveAndLand(int moves) {
+        return squareBehaviour.moveAndLand(moves);
+    }
+
+    public Square landHereOrGoHome() {
+        return squareBehaviour.landHereOrGoHome();
+    }
+
+    public Square findLastSquare() {
+        return board.getLastSquare();
+    }
+
+    public Square findFirstSquare() {
+        return board.getFirstSquare();
+    }
+
+    public Square findRelativeSquare(int shift) {
+        return board.findSquare(position + shift);
     }
 }

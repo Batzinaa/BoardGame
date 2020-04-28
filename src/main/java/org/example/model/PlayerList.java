@@ -1,19 +1,21 @@
 package org.example.model;
 
 import java.util.LinkedList;
-import java.util.List;
 
 public class PlayerList {
 
-    private LinkedList<Player> playerList = new LinkedList<>();
+    private LinkedList<Player> playerList = new LinkedList<Player>();
     private Player currentPlayer;
 
+    public PlayerList(String[] playerNames) {
+        setPlayers(playerNames);
+    }
 
     public void add(Player player) {
         playerList.add(player);
     }
 
-    public int getSize() {
+    public int getNumberOfPlayers() {
         return playerList.size();
     }
 
@@ -23,27 +25,23 @@ public class PlayerList {
         return currentPlayer;
     }
 
-    public void setPlayerList(List<Player> players) {
-        for (Player player : players) {
-            add(player);
-        }
-    }
-
     public Player getFirstPlayer() {
         return playerList.getFirst();
     }
 
-    public Player getCurrentPlayer() {
-        return currentPlayer;
-    }
-
-    public List<Player> getPlayerList() {
-        return playerList;
-    }
-
-    public void setPlayers(List<Player> players) {
-        for(Player player : players){
-            add(player);
+    public void setPlayers(String[] playerNames) {
+        System.out.println("Players are: ");
+        for (String str : playerNames) {
+            Player player = new Player(str);
+            playerList.add(player);
         }
+    }
+
+    public Player getCurrentPlayer() {
+        return playerList.peek();
+    }
+
+    public Player getPlayer(int index) {
+        return playerList.get(index);
     }
 }

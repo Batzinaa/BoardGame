@@ -1,12 +1,11 @@
 package org.example.behaviours;
 
-
 import org.example.model.BoardGame;
 import org.example.model.Square;
 
-public final class LoseTurnBehaviour extends SquareBehaviour {
+public final class LastSquareBehaviour extends SquareBehaviour {
 
-    public LoseTurnBehaviour(Square square) {
+    public LastSquareBehaviour(Square square) {
         super(square);
     }
 

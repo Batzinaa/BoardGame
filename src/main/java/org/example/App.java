@@ -2,23 +2,19 @@ package org.example;
 
 import org.example.model.*;
 
-
 public class App {
-
     public static void main(String[] args) {
+        String[] playerNames = {"Batzinaa", "Komposta"};
+        int numberOfSquares = 50;
 
-        //TODO: PlayerService use JSON to setup playerList
-        PlayerList playerList = new PlayerList();
-        Player batzinaa = new Player("batzinaa");
-        Player dimitris = new Player("blackline");
-        playerList.add(batzinaa);
-        playerList.add(dimitris);
+        int[][] snakes = {};
+        int[][] ladders = {};
 
-        BoardGame boardGame = new BoardGame();
-        boardGame.setPlayers(playerList.getPlayerList());
-        boardGame.setBoard(); //TODO: use JSON to setup Board
-        boardGame.startGame();
+        BoardGame boardGame = new BoardGame(numberOfSquares,
+                snakes,
+                ladders,
+                playerNames);
 
-
+        boardGame.play();
     }
 }
