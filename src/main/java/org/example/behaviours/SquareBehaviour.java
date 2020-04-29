@@ -32,22 +32,28 @@ public abstract class SquareBehaviour {
 
     public void leave(Player player) {
         square.setPlayer(null);
-        player.setSquare(null);
+        /*player.setSquare(null);*/
     }
 
     public Square moveAndLand(int moves) {
         int lastPosition = square.findLastSquare().getPosition();
         int currentPosition = square.getPosition();
-        if (currentPosition + moves > lastPosition){
+        if (currentPosition + moves > lastPosition) {
             System.out.println("");
             return square;
-        }else{
+        } else {
             System.out.println("");
             return square.findRelativeSquare(moves).landHereOrGoHome();
         }
     }
 
     public Square landHereOrGoHome() {
-        return null;
+        if (square.isOccupied()) {
+            System.out.println("square " + (square.getPosition() + 1)
+                    + " is occupied.");
+        } else {
+            System.out.println("land at " + (square.getPosition() + 1));
+        }
+        return square.isOccupied() ? square.findFirstSquare() : square;
     }
 }

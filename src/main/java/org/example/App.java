@@ -7,8 +7,8 @@ public class App {
         String[] playerNames = {"Batzinaa", "Komposta"};
         int numberOfSquares = 50;
 
-        int[][] snakes = {};
-        int[][] ladders = {};
+        int[][] snakes = {{10, 1}, {20, 2}, {30, 3}, {40, 4}, {50, 5}};
+        int[][] ladders = {{6, 16}, {7, 17}, {8, 18}, {9, 19}, {11, 55}};
 
         BoardGame boardGame = new BoardGame(numberOfSquares,
                 snakes,

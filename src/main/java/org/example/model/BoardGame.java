@@ -63,7 +63,7 @@ public class BoardGame {
 
     private void startGame() {
         spawnPlayersAtFirstSquare();
-        winner = null;
+       // winner = null;
     }
 
     public void play() {
@@ -71,6 +71,7 @@ public class BoardGame {
 
         System.out.println("Initial state : \n" + this);
         while (gameNotOver()) {
+            playerList.getFirstPlayer();
             int roll = getTotalValueAfterDiceRoll();
             System.out.println("Current player is " + currentPlayer().getNickname() + " and rolls " + roll);
             movePlayer(roll);
@@ -80,14 +81,14 @@ public class BoardGame {
         System.out.println(winner + " has won.");
     }
 
-    @Override
+    /*@Override
     public String toString() {
         String str = new String();
         for (int i = 0; i < playerList.getNumberOfPlayers(); i++) {
             str += playerList.getPlayer(i).getNickname() + " is at square " + playerList.getPlayer(i).getPosition() + 1 + "\n";
         }
         return str;
-    }
+    }*/
 
 
 }

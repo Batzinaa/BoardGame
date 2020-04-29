@@ -38,9 +38,6 @@ public class Square {
         return squareBehaviour.isLastSquare();
     }
 
-    /*public void executeBehaviour() {
-        squareBehaviour.execute(boardGame);
-    }*/
 
     public void enter(Player player) {
         squareBehaviour.enter(player);
