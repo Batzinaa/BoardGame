@@ -1,6 +1,5 @@
 package org.example.behaviours;
 
-import org.example.model.BoardGame;
 import org.example.model.Square;
 
 public final class LastSquareBehaviour extends SquareBehaviour {
@@ -10,7 +9,7 @@ public final class LastSquareBehaviour extends SquareBehaviour {
     }
 
     @Override
-    public void execute(BoardGame boardGame) {
-
+    public boolean isLastSquare() {
+        return true;
     }
 }

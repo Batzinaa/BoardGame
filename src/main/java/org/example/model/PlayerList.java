@@ -11,10 +11,6 @@ public class PlayerList {
         setPlayers(playerNames);
     }
 
-    public void add(Player player) {
-        playerList.add(player);
-    }
-
     public int getNumberOfPlayers() {
         return playerList.size();
     }

@@ -1,7 +1,6 @@
 package org.example.behaviours;
 
 
-import org.example.model.BoardGame;
 import org.example.model.Square;
 
 public final class LadderBehaviour extends SquareBehaviour {
@@ -13,9 +12,14 @@ public final class LadderBehaviour extends SquareBehaviour {
     }
 
     @Override
-    public void execute(BoardGame boardGame) {
-
+    public Square landHereOrGoHome() {
+        System.out.println("ladder from " + (square.getPosition() + 1)
+                + " to " + (destination().getPosition() + 1));
+        return destination().landHereOrGoHome();
     }
 
+    private Square destination() {
+        return square.findRelativeSquare(transport);
+    }
 }
 

@@ -10,8 +10,5 @@ public final class LoseTurnBehaviour extends SquareBehaviour {
         super(square);
     }
 
-    @Override
-    public void execute(BoardGame boardGame) {
 
-    }
 }

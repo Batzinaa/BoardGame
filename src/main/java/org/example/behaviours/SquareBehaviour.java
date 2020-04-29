@@ -1,6 +1,6 @@
 package org.example.behaviours;
 
-import org.example.model.BoardGame;
+
 import org.example.model.Player;
 import org.example.model.Square;
 
@@ -23,8 +23,6 @@ public abstract class SquareBehaviour {
         return false;
     }
 
-    public abstract void execute(BoardGame boardGame);
-
     public void enter(Player player) {
         square.setPlayer(player);
         player.setSquare(square);
@@ -32,7 +30,6 @@ public abstract class SquareBehaviour {
 
     public void leave(Player player) {
         square.setPlayer(null);
-        /*player.setSquare(null);*/
     }
 
     public Square moveAndLand(int moves) {
