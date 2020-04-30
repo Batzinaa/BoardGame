@@ -36,10 +36,14 @@ public abstract class SquareBehaviour {
         int lastPosition = square.findLastSquare().getPosition();
         int currentPosition = square.getPosition();
         if (currentPosition + moves > lastPosition) {
-            System.out.println("");
+            System.out.println("Should go to " + (currentPosition + moves + 1)
+                    + "beyond last square " + (lastPosition + 1)
+                    + "so don't move");
             return square;
         } else {
-            System.out.println("");
+            System.out.println("move from "
+                    + (square.getPosition() + 1) + " to "
+                    + (square.findRelativeSquare(moves).getPosition() + 1));
             return square.findRelativeSquare(moves).landHereOrGoHome();
         }
     }

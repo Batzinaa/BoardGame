@@ -76,7 +76,7 @@ public class BoardGame {
             movePlayer(roll);
             System.out.println("State : \n" + this);
             getNextPlayer();
-            if (currentPlayer().wins()){
+            if (currentPlayer().wins()) {
                 winner = currentPlayer();
             }
         }
@@ -87,7 +87,7 @@ public class BoardGame {
     public String toString() {
         String str = new String();
         for (int i = 0; i < playerList.getNumberOfPlayers(); i++) {
-            str += playerList.getPlayer(i).getNickname() + " is at square " + playerList.getPlayer(i).getPosition() + 1 + "\n";
+            str += playerList.getPlayer(i).getNickname() + " is at square " + playerList.getPlayer(i).getPosition() + "\n";
         }
         return str;
     }
