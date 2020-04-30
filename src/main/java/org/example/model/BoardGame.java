@@ -66,6 +66,7 @@ public class BoardGame {
         winner = null;
     }
 
+
     public void play() {
         startGame();
 
@@ -80,7 +81,7 @@ public class BoardGame {
                 winner = currentPlayer();
             }
         }
-        System.out.println(winner + " has won.");
+        System.out.println(winner.getNickname() + " has won.");
     }
 
     @Override

@@ -16,6 +16,5 @@ public class App {
                 playerNames);
 
         boardGame.play();
-        boardGame.toString();
     }
 }
