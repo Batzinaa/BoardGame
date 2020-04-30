@@ -76,6 +76,9 @@ public class BoardGame {
             movePlayer(roll);
             System.out.println("State : \n" + this);
             getNextPlayer();
+            if (currentPlayer().wins()){
+                winner = currentPlayer();
+            }
         }
         System.out.println(winner + " has won.");
     }

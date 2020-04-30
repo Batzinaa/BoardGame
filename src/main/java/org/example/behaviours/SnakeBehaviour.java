@@ -21,4 +21,5 @@ public final class SnakeBehaviour extends SquareBehaviour {
     private Square destination(){
         return square.findRelativeSquare(transport);
     }
+
 }

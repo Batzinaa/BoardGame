@@ -7,8 +7,8 @@ public class App {
         String[] playerNames = {"Batzinaa", "Komposta"};
         int numberOfSquares = 50;
 
-        int[][] snakes = {{10, 1}, {20, 2}, {30, 3}};
-        int[][] ladders = {{6, 16}, {7, 17}, {8, 18}};
+        int[][] snakes = {{20,10}};
+        int[][] ladders = {{21,30}};
 
         BoardGame boardGame = new BoardGame(numberOfSquares,
                 snakes,
@@ -16,5 +16,6 @@ public class App {
                 playerNames);
 
         boardGame.play();
+        boardGame.toString();
     }
 }
