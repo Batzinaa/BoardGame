@@ -1,6 +1,6 @@
 # BoardGame
 Initial commit
-package test;
+package services;
 
 import java.io.FileNotFoundException;
 import java.io.FileReader;
@@ -12,20 +12,16 @@ import org.json.simple.JSONObject;
 import org.json.simple.parser.JSONParser;
 import org.json.simple.parser.ParseException;
 
-public class ParseJSON 
+public class SetupBoardService 
 {
-
-	public static void main(String[] args) 
+	public JSONParser parser = new JSONParser();
 	{
-		JSONParser parser = new JSONParser();
-		
-		
 		try
 		{
-			Object obj = parser.parse(new FileReader("test.json"));
+			Object obj = parser.parse(new FileReader("board.json"));
 			JSONObject jsonObject = (JSONObject) obj;
 			
-			Object game = jsonObject.get("game configuration");
+			//Object game = jsonObject.get("game configuration");
 			//System.out.println("Board size is :" + game);
 			
 			Object board = jsonObject.get("number of squares");
@@ -54,5 +50,4 @@ public class ParseJSON
 		catch(Exception e) {e.printStackTrace();}
 
 	}
-
 }
