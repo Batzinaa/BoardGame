@@ -1,0 +1,21 @@
+{"number of squares":100,
+ "tetragona":
+ [
+ {"behaviour":"snake","position":null,"destination":null},
+ {"behaviour":"snake","position":null,"destination":null},
+ {"behaviour":"snake","position":null,"destination":null},
+ {"behaviour":"ladder","position":null,"destination":null},
+ {"behaviour":"ladder","position":null,"destination":null},
+ {"behaviour":"ladder","position":null,"destination":null}
+ ],
+ "names":
+ [  "ignatis",
+    "giannis",
+    "antonis",
+    "nikos",
+    "stavros",
+    "panagiotis",
+    "stratos",
+    "swtiris"
+  ]
+}
