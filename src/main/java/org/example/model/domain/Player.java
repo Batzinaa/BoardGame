@@ -1,4 +1,4 @@
-package org.example.model;
+package org.example.model.domain;
 
 
 public class Player {
@@ -21,7 +21,7 @@ public class Player {
     }
 
     public int getPosition() {
-        return square.getPosition();
+        return square.getPosition()+1;
     }
 
     public String getNickname() {

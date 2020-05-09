@@ -1,6 +1,6 @@
-package org.example.model;
+package org.example.model.domain;
 
-import org.example.behaviours.SquareBehaviour;
+import org.example.model.behaviours.SquareBehaviour;
 
 
 public class Square {

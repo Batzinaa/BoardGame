@@ -1,7 +1,7 @@
-package org.example.model;
+package org.example.model.domain;
 
 
-import org.example.behaviours.*;
+import org.example.model.behaviours.*;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -16,8 +16,16 @@ public class Board {
         createLadders(ladders);
     }
 
+    /*public Board(int numOfSquares, Square[] squares) {
+        createSquares(numOfSquares);
+        createSpecialSquares(squares);
+    }*/
 
-    public void createSquares(int numOfSquares) {
+    public void createSpecialSquares(Square[] squares) {
+    }
+
+
+    private void createSquares(int numOfSquares) {
         System.out.println("There are " + numOfSquares + " squares.");
         for (int i = 0; i < numOfSquares; i++) {
             Square square = new Square(this, i);
@@ -28,7 +36,7 @@ public class Board {
         getLastSquare().setBehaviour(new LastSquareBehaviour(getLastSquare()));
     }
 
-    public void createSnakes(int[][] snakes) {
+    private void createSnakes(int[][] snakes) {
         for (int i = 0; i < snakes.length; i++) {
             int fromPosition = snakes[i][0] - 1;
             int toPosition = snakes[i][1] - 1;
@@ -40,7 +48,7 @@ public class Board {
         }
     }
 
-    public void createLadders(int[][] ladders) {
+    private void createLadders(int[][] ladders) {
         for (int i = 0; i < ladders.length; i++) {
             int fromPosition = ladders[i][0] - 1;
             int toPosition = ladders[i][1] - 1;

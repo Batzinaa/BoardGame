@@ -1,8 +1,8 @@
-package org.example.behaviours;
+package org.example.model.behaviours;
 
 
-import org.example.model.Player;
-import org.example.model.Square;
+import org.example.model.domain.Player;
+import org.example.model.domain.Square;
 
 public abstract class SquareBehaviour {
     protected Square square;
@@ -37,8 +37,8 @@ public abstract class SquareBehaviour {
         int currentPosition = square.getPosition();
         if (currentPosition + moves > lastPosition) {
             System.out.println("Should go to " + (currentPosition + moves + 1)
-                    + "beyond last square " + (lastPosition + 1)
-                    + "so don't move");
+                    + " beyond last square " + (lastPosition + 1)
+                    + " so don't move");
             return square;
         } else {
             System.out.println("move from "

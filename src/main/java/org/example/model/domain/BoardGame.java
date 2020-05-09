@@ -1,12 +1,10 @@
-package org.example.model;
+package org.example.model.domain;
 
 
 public class BoardGame {
 
-    private Display display = new Display();
     private Board board;
     private PlayerList playerList;
-
     private Player winner = null;
 
     private int numberOfDices;

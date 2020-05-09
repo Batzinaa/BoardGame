@@ -1,8 +1,7 @@
-package org.example.behaviours;
+package org.example.model.behaviours;
 
 
-import org.example.model.BoardGame;
-import org.example.model.Square;
+import org.example.model.domain.Square;
 
 public final class LoseTurnBehaviour extends SquareBehaviour {
 
